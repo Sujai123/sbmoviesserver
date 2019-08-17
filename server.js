@@ -16,7 +16,7 @@ app.post('/',(req,res)=>{
     let url="https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s="+MovieName
     unirest.get(url)
     .header("X-RapidAPI-Host", "movie-database-imdb-alternative.p.rapidapi.com")
-    .header("X-RapidAPI-Key", "73b748c31fmsh6c4c790ca972c45p1dc042jsn02ab7bf13666")
+    .header("X-RapidAPI-Key", "My API Key")
     .end(function (result) {
     obj=result.body;
     if(typeof(obj.Search)!="undefined"){
@@ -36,12 +36,12 @@ app.post('/movie',(req,res)=>{
     let url=`https://movie-database-imdb-alternative.p.rapidapi.com/?i=${Movieid}&r=json`
     unirest.get(url)
     .header("X-RapidAPI-Host", "movie-database-imdb-alternative.p.rapidapi.com")
-    .header("X-RapidAPI-Key", "73b748c31fmsh6c4c790ca972c45p1dc042jsn02ab7bf13666")
+    .header("X-RapidAPI-Key", "My API Key")
     .end(function (result) {
     res.send(result.body);
     });
 })
 
-app.listen(3001,()=>{
+app.listen(process.env.PORT || 3001,()=>{
     console.log('port started at 3001')
 })
